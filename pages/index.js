@@ -1,13 +1,14 @@
-import Link from 'next/link'
-import Trans from 'next-translate/Trans'
-import useTranslation from 'next-translate/useTranslation'
-import Layout from '../components/Layout'
+import Link from "next/link";
+import Trans from "next-translate/Trans";
+import useTranslation from "next-translate/useTranslation";
+import Layout from "../components/Layout";
+import { withLayout } from "@moxy/next-layout";
 
-export default function Home() {
-  const { t } = useTranslation()
+function Home() {
+  const { t } = useTranslation();
 
   return (
-    <Layout>
+    <>
       <main>
         <Trans
           i18nKey="home:title"
@@ -18,27 +19,27 @@ export default function Home() {
         />
 
         <p className="description">
-          {t('home:description')} <code>_pages/index.js</code>
+          {t("home:description")} <code>_pages/index.js</code>
         </p>
 
         <div className="grid">
           <Link href="/" locale="en">
             <div className="card">
-              <h3>{t('home:english')}</h3>
-              <p>{t('home:change-english')}</p>
+              <h3>{t("home:english")}</h3>
+              <p>{t("home:change-english")}</p>
             </div>
           </Link>
 
           <Link href="/" locale="ca">
             <div className="card">
-              <h3>{t('home:catalan')}</h3>
-              <p>{t('home:change-catalan')}</p>
+              <h3>{t("home:catalan")}</h3>
+              <p>{t("home:change-catalan")}</p>
             </div>
           </Link>
 
           <a href="https://nextjs.org/docs" className="card">
             <h3>Next.js &rarr;</h3>
-            <p>{t('home:next-docs')}</p>
+            <p>{t("home:next-docs")}</p>
           </a>
 
           <a
@@ -46,7 +47,7 @@ export default function Home() {
             className="card"
           >
             <h3>Learn &rarr;</h3>
-            <p>{t('home:plugin-docs')}</p>
+            <p>{t("home:plugin-docs")}</p>
           </a>
         </div>
       </main>
@@ -136,6 +137,8 @@ export default function Home() {
           }
         }
       `}</style>
-    </Layout>
-  )
+    </>
+  );
 }
+
+export default withLayout(<Layout />)(Home);
